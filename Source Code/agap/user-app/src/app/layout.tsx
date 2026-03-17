@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   title: "AGAP — Emergency Help",
   description: "Request immediate emergency assistance",
   manifest: "/manifest.json",
+  icons: "data:,",
 };
 
 export const viewport: Viewport = {

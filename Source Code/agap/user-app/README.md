@@ -95,11 +95,7 @@ src/
 
 ## Development Notes
 
-- Prototype: No Agora integration (prototype), uses browser-native APIs
+- Prototype: Mimics Agora integration for now, uses browser-native APIs
 - Location tracking: Falls back to Manila if GPS unavailable
 - Voice recognition: Chrome/Edge recommended for best support
 - PWA: Installable for offline use
-
-## License
-
-MIT
