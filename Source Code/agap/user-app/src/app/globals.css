@@ -1,0 +1,246 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+}
+
+/* ── Light theme ─────────────────────────────────────────────────────────── */
+:root {
+  --radius: 0.625rem;
+
+  /* App surface */
+  --app-bg:          #e8edf3;
+  --app-bezel:       #c8cdd4;
+
+  /* Neumorphic shadows */
+  --nm-shadow:       6px 6px 14px rgba(0,0,0,0.10), -5px -5px 12px rgba(255,255,255,0.88);
+  --nm-border:       rgba(255,255,255,0.60);
+  --nm-inset:        inset 4px 4px 10px rgba(0,0,0,0.09), inset -4px -4px 10px rgba(255,255,255,0.82);
+  --nm-hover:        7px 7px 16px rgba(0,0,0,0.12), -6px -6px 14px rgba(255,255,255,0.92);
+  --nm-active:       inset 3px 3px 8px rgba(0,0,0,0.12), inset -3px -3px 8px rgba(255,255,255,0.80);
+
+  /* Typography */
+  --tx-brand:        #ef4444;   /* red-500  */
+  --tx-title:        #1e293b;   /* slate-800 */
+  --tx-heading:      #334155;   /* slate-700 */
+  --tx-body:         #475569;   /* slate-600 */
+  --tx-muted:        #94a3b8;   /* slate-400 */
+  --tx-dim:          #94a3b8;   /* slate-400 */
+  --tx-mono:         #334155;   /* slate-700 */
+  --tx-mono-sm:      #64748b;   /* slate-500 */
+
+  /* Semantic colours */
+  --c-online:        #059669;   /* emerald-600 */
+  --c-online-bg:     #d1fae5;   /* emerald-100 */
+  --c-offline:       #dc2626;   /* red-600 */
+  --c-gps:           #2563eb;   /* blue-600 */
+  --c-gps-icon:      #3b82f6;   /* blue-500 */
+  --c-warn:          #d97706;   /* amber-600 */
+  --c-warn-bg:       #fef3c7;   /* amber-100 */
+  --c-warn-text:     #92400e;   /* amber-800 */
+  --c-info:          #1d4ed8;   /* blue-700 */
+  --c-info-bg:       #dbeafe;   /* blue-100 */
+  --c-info-icon:     #3b82f6;   /* blue-500 */
+  --c-success:       #059669;
+  --c-success-bg:    #d1fae5;
+
+  /* shadcn tokens */
+  --background:      oklch(1 0 0);
+  --foreground:      oklch(0.145 0 0);
+  --card:            oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --primary:         oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --muted:           oklch(0.97 0 0);
+  --muted-foreground:oklch(0.556 0 0);
+  --destructive:     oklch(0.577 0.245 27.325);
+  --border:          oklch(0.922 0 0);
+  --input:           oklch(0.922 0 0);
+  --ring:            oklch(0.708 0 0);
+  --popover:         oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+}
+
+/* ── Dark theme ──────────────────────────────────────────────────────────── */
+.dark {
+  /* App surface — deep navy-black */
+  --app-bg:          #0f1117;
+  --app-bezel:       #060709;
+
+  /* Neumorphic shadows — dark surfaces use coloured shadow tints for vibrancy */
+  --nm-shadow:       6px 6px 16px rgba(0,0,0,0.55), -4px -4px 12px rgba(255,255,255,0.04);
+  --nm-border:       rgba(255,255,255,0.07);
+  --nm-inset:        inset 4px 4px 10px rgba(0,0,0,0.50), inset -3px -3px 8px rgba(255,255,255,0.04);
+  --nm-hover:        7px 7px 18px rgba(0,0,0,0.65), -5px -5px 14px rgba(255,255,255,0.06);
+  --nm-active:       inset 4px 4px 12px rgba(0,0,0,0.60), inset -3px -3px 8px rgba(255,255,255,0.03);
+
+  /* Typography — high contrast on dark */
+  --tx-brand:        #f87171;   /* red-400 — brighter on dark */
+  --tx-title:        #f1f5f9;   /* slate-100 */
+  --tx-heading:      #e2e8f0;   /* slate-200 */
+  --tx-body:         #cbd5e1;   /* slate-300 */
+  --tx-muted:        #94a3b8;   /* slate-400 */
+  --tx-dim:          #64748b;   /* slate-500 — readable on dark */
+  --tx-mono:         #e2e8f0;   /* slate-200 */
+  --tx-mono-sm:      #94a3b8;   /* slate-400 */
+
+  /* Semantic colours — more vibrant on dark */
+  --c-online:        #34d399;   /* emerald-400 */
+  --c-online-bg:     rgba(52,211,153,0.15);
+  --c-offline:       #f87171;   /* red-400 */
+  --c-gps:           #60a5fa;   /* blue-400 */
+  --c-gps-icon:      #60a5fa;
+  --c-warn:          #fbbf24;   /* amber-400 */
+  --c-warn-bg:       rgba(251,191,36,0.12);
+  --c-warn-text:     #fde68a;   /* amber-200 */
+  --c-info:          #93c5fd;   /* blue-300 */
+  --c-info-bg:       rgba(96,165,250,0.12);
+  --c-info-icon:     #60a5fa;
+  --c-success:       #34d399;
+  --c-success-bg:    rgba(52,211,153,0.15);
+
+  /* shadcn tokens */
+  --background:      oklch(0.13 0.01 250);
+  --foreground:      oklch(0.95 0 0);
+  --card:            oklch(0.17 0.01 250);
+  --card-foreground: oklch(0.95 0 0);
+  --primary:         oklch(0.92 0 0);
+  --primary-foreground: oklch(0.17 0 0);
+  --muted:           oklch(0.22 0.01 250);
+  --muted-foreground:oklch(0.60 0 0);
+  --destructive:     oklch(0.65 0.22 25);
+  --border:          oklch(0.25 0.01 250);
+  --input:           oklch(0.22 0.01 250);
+  --ring:            oklch(0.45 0 0);
+  --popover:         oklch(0.17 0.01 250);
+  --popover-foreground: oklch(0.95 0 0);
+}
+
+/* ── Phone shell ─────────────────────────────────────────────────────────── */
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--app-bezel);
+  transition: background-color 0.3s ease;
+}
+
+#phone-shell {
+  position: relative;
+  width: 390px;
+  height: 100dvh;
+  max-height: 844px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  background-color: var(--app-bg);
+  transition: background-color 0.3s ease;
+  /* Clip absolute overlays to shell bounds */
+  isolation: isolate;
+}
+
+#phone-shell::-webkit-scrollbar { display: none; }
+
+/* Hide scrollbars everywhere — phone-like feel */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+*::-webkit-scrollbar { display: none; }
+
+@media (max-width: 430px) {
+  body { background-color: var(--app-bg); }
+  #phone-shell {
+    width: 100%;
+    height: 100dvh;
+    max-height: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+@media (min-width: 431px) {
+  #phone-shell {
+    border-radius: 40px;
+    box-shadow:
+      0 0 0 10px #1a1a1a,
+      0 0 0 12px #3a3a3a,
+      0 40px 80px rgba(0,0,0,0.55);
+  }
+}
+
+/* ── Neumorphic utility classes ──────────────────────────────────────────── */
+@layer utilities {
+  .nm {
+    background-color: var(--app-bg);
+    border-radius: 1rem;
+    box-shadow: var(--nm-shadow);
+    border: 1px solid var(--nm-border);
+    transition: box-shadow 0.15s ease-out, transform 0.15s ease-out, background-color 0.3s ease;
+  }
+
+  .nm-inset {
+    background-color: var(--app-bg);
+    border-radius: 1rem;
+    box-shadow: var(--nm-inset);
+    transition: background-color 0.3s ease;
+  }
+
+  .nm-btn {
+    background-color: var(--app-bg);
+    border-radius: 1rem;
+    box-shadow: var(--nm-shadow);
+    border: 1px solid var(--nm-border);
+    cursor: pointer;
+    user-select: none;
+    transition: box-shadow 0.15s ease-out, transform 0.15s ease-out, background-color 0.3s ease;
+  }
+
+  .nm-btn:hover {
+    box-shadow: var(--nm-hover);
+  }
+
+  .nm-btn:active {
+    transform: scale(0.96);
+    box-shadow: var(--nm-active);
+  }
+
+  .nm-btn:disabled {
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  /* Rounded variant for circular buttons */
+  .nm-btn-round {
+    border-radius: 9999px;
+  }
+}

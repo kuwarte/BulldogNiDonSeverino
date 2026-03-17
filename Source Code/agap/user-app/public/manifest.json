@@ -1,0 +1,24 @@
+{
+  "name": "RescueNow — Emergency Help",
+  "short_name": "RescueNow",
+  "start_url": "/rescue",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#ef4444",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Request Rescue",
+      "url": "/rescue",
+      "description": "Request immediate emergency assistance"
+    }
+  ]
+}
