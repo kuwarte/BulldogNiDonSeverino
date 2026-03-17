@@ -17,7 +17,7 @@ AGAP addresses critical gaps in disaster response during floods and emergencies:
 - **Offline Resilience**: When networks fail during disasters, the PWA queues requests locally and syncs when connection returns
 - **Severity Awareness**: AI analyzes voice to extract keywords and prioritize critical signals
 - **Calm Guidance**: An AI voice actively soothes panicked users during the SOS process—speaking calmly, reassuring them that help is coming, and giving clear step-by-step instructions on what to do while they wait for rescue
-  **UN SDG**: SDG 11 - Sustainable Cities and Communities
+- **UN SDG**: SDG 11 - Sustainable Cities and Communities
 
 ---
 
