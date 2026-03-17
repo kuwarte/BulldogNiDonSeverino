@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AGAP — Emergency Rescue App
 
-## Getting Started
+A real-time emergency rescue app for citizens in distress. Built with Next.js, React, TypeScript, and Supabase.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Voice SOS** — Tap to speak your emergency, voice is transcribed and analyzed for priority and keywords
+- **Text SOS** — Option to type your emergency if voice is unavailable
+- **Location tracking** — Captures your GPS coordinates automatically
+- **Priority detection** — Real-time keyword extraction and severity scoring
+- **Offline queue** — Requests are queued and sent automatically when signal returns
+- **PWA support** — Installable as a mobile app for offline use
+- **Status bar & phone nav** — Mimics native phone UI for accessibility
+- **Light mode** — Clean, accessible interface
+
+## Tech Stack
+
+| Layer               | Library                            |
+| ------------------- | ---------------------------------- |
+| UI framework        | Next.js 15 + React 18 + TypeScript |
+| Build tool          | Next.js (App Router)               |
+| Database / Realtime | Supabase JS v2                     |
+| Styling             | Tailwind CSS v3                    |
+| Headless UI         | @headlessui/react                  |
+| Icons               | lucide-react                       |
+| Voice recognition   | Web Speech API                     |
+| Toasts              | sonner                             |
+| PWA                 | next-pwa                           |
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── rescue/                # Main rescue flow (voice/text input, confirmation)
+│   ├── layout.tsx             # App shell, phone UI
+│   └── page.tsx               # Entry point
+├── components/
+│   ├── StatusBar.tsx          # Phone status bar (time, signal, battery)
+│   ├── PhoneNavBar.tsx        # Phone nav bar (back, home, tabs)
+│   ├── PixelSOSButton.tsx     # SOS button (voice trigger)
+│   ├── SiriWave.tsx           # Voice listening animation
+│   ├── VoiceChannel.tsx       # Voice recognition logic
+│   └── ui/                    # Headless UI primitives
+├── hooks/
+│   ├── useAgoraVoiceClient.ts # Web Speech API voice recognition
+│   ├── useGeolocation.ts      # Location tracking
+│   ├── useOnlineStatus.ts     # Network status
+│   ├── usePWAInstall.ts       # PWA install prompt
+│   └── useTriageAgent.ts      # Emergency triage state machine
+├── lib/
+│   ├── intentDetect.ts        # Keyword extraction & priority scoring
+│   ├── rescueStore.ts         # Request publishing & state
+│   └── utils.ts               # Utility functions
+├── types/
+│   ├── rescue.ts              # Rescue request interfaces
+│   └── global.d.ts            # Global types
+├── public/
+│   ├── manifest.json          # PWA manifest
+│   ├── sw.js                  # Service worker
+│   └── icons/                 # App icons
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Key Components
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### `rescue/RescuePage.tsx`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Main emergency flow: voice/text input, keyword detection, priority scoring, confirmation
 
-## Learn More
+### `useAgoraVoiceClient.ts`
 
-To learn more about Next.js, take a look at the following resources:
+- Handles browser-native voice recognition (Web Speech API)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### `useGeolocation.ts`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Captures device GPS coordinates for each request
 
-## Deploy on Vercel
+### `intentDetect.ts`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Extracts keywords and calculates priority from user speech/text
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Usage
+
+1. **Install dependencies:**
+   ```bash
+   pnpm install
+   ```
+2. **Run the app:**
+   ```bash
+   pnpm dev
+   ```
+3. **Open in browser:**
+   - Go to `http://localhost:3000`
+   - Grant microphone and location permissions
+
+## Development Notes
+
+- Prototype: No Agora integration (prototype), uses browser-native APIs
+- Location tracking: Falls back to Manila if GPS unavailable
+- Voice recognition: Chrome/Edge recommended for best support
+- PWA: Installable for offline use
+
+## License
+
+MIT
