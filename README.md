@@ -70,17 +70,25 @@ CITIZEN (User App)              CLOUD (Supabase)           RESPONDER (Dashboard)
 
 ### User App (Citizen SOS)
 
-**Home**
-<img src="./img-demo/user-app-one.png" width="300" alt="Home Screen">
+<div>
+  <p><strong>Home</strong></p>
+  <img src="./img-demo/user-app-one.png" width="300" alt="Home Screen">
+</div>
 
-**Voice SOS**
-<img src="./img-demo/user-app-two.png" width="300" alt="Voice SOS">
+<div>
+  <p><strong>Voice SOS</strong></p>
+  <img src="./img-demo/user-app-two.png" width="300" alt="Voice SOS">
+</div>
 
-**Confirmation & Success**
-<img src="./img-demo/user-app-three.png" width="300" alt="Confirmation">
+<div>
+  <p><strong>Confirmation & Success</strong></p>
+  <img src="./img-demo/user-app-three.png" width="300" alt="Confirmation">
+</div>
 
-**Text Fallback (Voice Unavailable)**
-<img src="./img-demo/user-app-four.png" width="300" alt="Text Fallback">
+<div>
+  <p><strong>Text Fallback (Voice Unavailable)</strong></p>
+  <img src="./img-demo/user-app-four.png" width="300" alt="Text Fallback">
+</div>
 
 ---
 
