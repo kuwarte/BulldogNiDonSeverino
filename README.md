@@ -75,15 +75,21 @@ CITIZEN (User App)              CLOUD (Supabase)           RESPONDER (Dashboard)
   <img src="./img-demo/user-app-one.png" width="300" alt="Home Screen">
 </div>
 
+---
+
 <div>
   <p><strong>Voice SOS</strong></p>
   <img src="./img-demo/user-app-two.png" width="300" alt="Voice SOS">
 </div>
 
+---
+
 <div>
   <p><strong>Confirmation & Success</strong></p>
   <img src="./img-demo/user-app-three.png" width="300" alt="Confirmation">
 </div>
+
+---
 
 <div>
   <p><strong>Text Fallback (Voice Unavailable)</strong></p>
@@ -97,8 +103,12 @@ CITIZEN (User App)              CLOUD (Supabase)           RESPONDER (Dashboard)
 **Live Map (Pending Signal)**
 ![Map with Pending Popup](./img-demo/rescuer-dashboard-one.png)
 
+---
+
 **Signal Details**
 ![Full Signal Info](./img-demo/rescuer-dashboard-two.png)
+
+---
 
 **Resolved Signal**
 ![Resolved on Map](./img-demo/rescuer-dashboard-three.png)
