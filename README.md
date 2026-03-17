@@ -71,16 +71,16 @@ CITIZEN (User App)              CLOUD (Supabase)           RESPONDER (Dashboard)
 ### User App (Citizen SOS)
 
 **Home**
-![Home Screen](./img-demo/user-app-one.png)
+<img src="./img-demo/user-app-one.png" width="300" alt="Home Screen">
 
 **Voice SOS**
-![Voice SOS](./img-demo/user-app-two.png)
+<img src="./img-demo/user-app-two.png" width="300" alt="Voice SOS">
 
 **Confirmation & Success**
-![Confirmation](./img-demo/user-app-three.png)
+<img src="./img-demo/user-app-three.png" width="300" alt="Confirmation">
 
 **Text Fallback (Voice Unavailable)**
-![Text Fallback](./img-demo/user-app-four.png)
+<img src="./img-demo/user-app-four.png" width="300" alt="Text Fallback">
 
 ---
 
