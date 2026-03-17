@@ -68,7 +68,7 @@ CITIZEN (User App)              CLOUD (Supabase)           RESPONDER (Dashboard)
 
 ## App Overview
 
-### User App (Citizen SOS)
+### User App - Citizen SOS
 
 <div>
   <p><strong>Home</strong></p>
@@ -100,18 +100,24 @@ CITIZEN (User App)              CLOUD (Supabase)           RESPONDER (Dashboard)
 
 ### Rescuer Dashboard
 
-**Live Map (Pending Signal)**
-![Map with Pending Popup](./img-demo/rescuer-dashboard-one.png)
+<div>
+  <p><strong>Live Map (Pending Signal)</strong></p>
+  <img src="./img-demo/rescuer-dashboard-one.png" width="600" alt="Map with Pending Popup">
+</div>
 
 ---
 
-**Signal Details**
-![Full Signal Info](./img-demo/rescuer-dashboard-two.png)
+<div>
+  <p><strong>Signal Details</strong></p>
+  <img src="./img-demo/rescuer-dashboard-two.png" width="600" alt="Full Signal Info">
+</div>
 
 ---
 
-**Resolved Signal**
-![Resolved on Map](./img-demo/rescuer-dashboard-three.png)
+<div>
+  <p><strong>Resolved Signal</strong></p>
+  <img src="./img-demo/rescuer-dashboard-three.png" width="600" alt="Resolved on Map">
+</div>
 
 ---
 
