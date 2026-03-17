@@ -70,21 +70,30 @@ CITIZEN (User App)              CLOUD (Supabase)           RESPONDER (Dashboard)
 
 ### User App (Citizen SOS)
 
-| Home                                        | Voice SOS                                 | Confirmation & Success                         |
-| ------------------------------------------- | ----------------------------------------- | ---------------------------------------------- |
-| ![Home Screen](./img-demo/user-app-one.png) | ![Voice SOS](./img-demo/user-app-two.png) | ![Confirmation](./img-demo/user-app-three.png) |
+**Home**
+![Home Screen](./img-demo/user-app-one.png)
 
-| Text Fallback (Voice Unavailable)              |
-| ---------------------------------------------- |
-| ![Text Fallback](./img-demo/user-app-four.png) |
+**Voice SOS**
+![Voice SOS](./img-demo/user-app-two.png)
+
+**Confirmation & Success**
+![Confirmation](./img-demo/user-app-three.png)
+
+**Text Fallback (Voice Unavailable)**
+![Text Fallback](./img-demo/user-app-four.png)
 
 ---
 
 ### Rescuer Dashboard
 
-| Live Map (Pending Signal)                                       | Signal Details                                            | Resolved Signal                                            |
-| --------------------------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------- |
-| ![Map with Pending Popup](./img-demo/rescuer-dashboard-one.png) | ![Full Signal Info](./img-demo/rescuer-dashboard-two.png) | ![Resolved on Map](./img-demo/rescuer-dashboard-three.png) |
+**Live Map (Pending Signal)**
+![Map with Pending Popup](./img-demo/rescuer-dashboard-one.png)
+
+**Signal Details**
+![Full Signal Info](./img-demo/rescuer-dashboard-two.png)
+
+**Resolved Signal**
+![Resolved on Map](./img-demo/rescuer-dashboard-three.png)
 
 ---
 
