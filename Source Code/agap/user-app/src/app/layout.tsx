@@ -50,7 +50,7 @@ export default function RootLayout({
           </div>
           <PhoneNavBar />
         </div>
-        {/* <ServiceWorkerRegister /> */}
+        <ServiceWorkerRegister />
       </body>
     </html>
   );

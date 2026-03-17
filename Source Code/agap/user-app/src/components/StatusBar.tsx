@@ -24,10 +24,7 @@ export default function StatusBar() {
   }, []);
 
   return (
-    <div
-      className="absolute top-0 left-0 right-0 w-full h-9 flex items-center justify-between px-5 
-                    bg-white/90 backdrop-blur-md border-b border-zinc-200 text-[13px] font-semibold text-zinc-900 z-40 rounded-t-[40px]"
-    >
+    <div className="absolute top-0 left-0 right-0 w-full h-9 flex items-center justify-between px-5 bg-white/90 backdrop-blur-md border-b border-zinc-200 text-[13px] font-semibold text-zinc-900 z-40 rounded-t-[40px]">
       {/* Dynamic Time */}
       <span className="tracking-tight">{time}</span>
 

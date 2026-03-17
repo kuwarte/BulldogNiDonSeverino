@@ -4,15 +4,11 @@ import React from "react";
 
 export default function PhoneNavBar() {
   return (
-    <nav
-      className="absolute bottom-0 left-0 right-0 w-full h-12 flex items-center justify-around 
-                    bg-white/90 backdrop-blur-md border-t border-zinc-200 text-zinc-600 z-40 rounded-b-[40px]"
-    >
+    <nav className="absolute bottom-0 left-0 right-0 w-full h-12 flex items-center justify-around bg-white/90 backdrop-blur-md border-t border-zinc-200 text-zinc-600 z-40 rounded-b-[40px]">
       {/* Back Button */}
       <button
         aria-label="Back"
-        className="group flex items-center justify-center h-12 w-12 rounded-full 
-                   transition-all duration-200 active:bg-zinc-800 active:scale-90"
+        className="group flex items-center justify-center h-12 w-12 rounded-full transition-all duration-200 active:bg-zinc-800 active:scale-90"
       >
         <svg
           width="24"
@@ -32,8 +28,7 @@ export default function PhoneNavBar() {
       {/* Home Button */}
       <button
         aria-label="Home"
-        className="group flex items-center justify-center h-12 w-12 rounded-full 
-                   transition-all duration-200 active:bg-zinc-800 active:scale-90"
+        className="group flex items-center justify-center h-12 w-12 rounded-full transition-all duration-200 active:bg-zinc-800 active:scale-90"
       >
         <svg
           width="24"
@@ -53,8 +48,7 @@ export default function PhoneNavBar() {
       {/* Tabs Button */}
       <button
         aria-label="Tabs"
-        className="group flex items-center justify-center h-12 w-12 rounded-full 
-                   transition-all duration-200 active:bg-zinc-800 active:scale-90"
+        className="group flex items-center justify-center h-12 w-12 rounded-full transition-all duration-200 active:bg-zinc-800 active:scale-90"
       >
         <svg
           width="22"

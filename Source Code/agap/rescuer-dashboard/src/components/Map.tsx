@@ -2,13 +2,14 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import { DivIcon } from "leaflet";
 import { DistressSignal } from "../types";
 import { useEffect } from "react";
+import { format } from "date-fns";
 import {
   AlertTriangle,
-  Info,
   CheckCircle,
   ChevronRight,
-  Users,
   Clock,
+  Mic,
+  ShieldAlert,
 } from "lucide-react";
 import { clsx } from "clsx";
 
@@ -21,10 +22,11 @@ const createPulseIcon = (color: string) => {
   });
 };
 
+// Colors perfectly mapped to Tailwind's default red-500, amber-500, and emerald-500
 const icons = {
   red: createPulseIcon("#EF4444"),
-  orange: createPulseIcon("#F59E0B"),
-  green: createPulseIcon("#10B981"),
+  amber: createPulseIcon("#F59E0B"),
+  emerald: createPulseIcon("#10B981"),
 };
 
 interface MapProps {
@@ -51,9 +53,9 @@ export default function Map({ signals, onMarkerClick, center }: MapProps) {
   ];
 
   const getIcon = (signal: DistressSignal) => {
-    if (signal.status === "resolved") return icons.green;
+    if (signal.status === "resolved") return icons.emerald;
     if (signal.severity === "dire") return icons.red;
-    return icons.orange;
+    return icons.amber;
   };
 
   return (
@@ -63,7 +65,7 @@ export default function Map({ signals, onMarkerClick, center }: MapProps) {
         zoom={6}
         maxBounds={maxBounds}
         style={{ height: "100%", width: "100%" }}
-        // Targeting Leaflet's internal classes to make the popup container clean
+        // Targeting Leaflet's internal classes to make the popup container transparent and clean
         className="z-0 bg-slate-50 dark:bg-zinc-950 transition-colors duration-500 
                    [&_.leaflet-popup-content-wrapper]:bg-transparent [&_.leaflet-popup-content-wrapper]:shadow-none 
                    [&_.leaflet-popup-tip-container]:hidden [&_.leaflet-popup-content]:m-0"
@@ -88,109 +90,84 @@ export default function Map({ signals, onMarkerClick, center }: MapProps) {
           >
             <Popup closeButton={false} offset={[0, -10]}>
               <div
-                className="w-[240px] overflow-hidden rounded-xl bg-white dark:bg-zinc-900 border border-black/10 dark:border-white/10 shadow-sm"
+                className="w-[280px] overflow-hidden rounded-xl bg-white/95 dark:bg-[#09090b]/95 backdrop-blur-2xl border border-slate-200/60 dark:border-zinc-800/60 shadow-xl transition-colors duration-300"
                 style={{ fontFamily: "inherit" }}
               >
-                {/* Color accent bar */}
-                <div
-                  className={clsx(
-                    "h-[3px] w-full",
-                    signal.status === "resolved"
-                      ? "bg-green-500"
-                      : signal.severity === "dire"
-                        ? "bg-red-500"
-                        : "bg-amber-400",
-                  )}
-                />
-
-                <div className="p-3.5">
-                  {/* Top row: badge + timestamp */}
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-1.5">
-                      <span
-                        className={clsx(
-                          "w-[7px] h-[7px] rounded-full shrink-0",
-                          signal.status === "resolved"
-                            ? "bg-green-500"
-                            : signal.severity === "dire"
-                              ? "bg-red-500 animate-pulse"
-                              : "bg-amber-400 animate-pulse",
-                        )}
-                      />
-                      <span
-                        className={clsx(
-                          "text-[10px] font-medium uppercase tracking-wide px-2 py-0.5 rounded",
-                          signal.status === "resolved"
-                            ? "bg-green-50 text-green-700 dark:bg-green-500/10 dark:text-green-400"
-                            : signal.severity === "dire"
-                              ? "bg-red-50 text-red-700 dark:bg-red-500/10 dark:text-red-400"
-                              : "bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400",
-                        )}
-                      >
-                        {signal.status === "resolved"
-                          ? "Resolved"
+                <div className="p-4">
+                  {/* Card Header matching sidebar style */}
+                  <div className="flex items-start gap-3 mb-3">
+                    <div
+                      className={clsx(
+                        "p-2.5 rounded-lg flex-shrink-0",
+                        signal.status === "resolved"
+                          ? "bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
                           : signal.severity === "dire"
-                            ? "Dire"
-                            : "Alert"}
+                            ? "bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400"
+                            : "bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400",
+                      )}
+                    >
+                      {signal.status === "resolved" ? (
+                        <CheckCircle className="h-4 w-4" />
+                      ) : signal.severity === "dire" ? (
+                        <ShieldAlert className="h-4 w-4" />
+                      ) : (
+                        <AlertTriangle className="h-4 w-4" />
+                      )}
+                    </div>
+
+                    <div className="flex-1 min-w-0 pt-0.5">
+                      <div className="flex justify-between items-start gap-2">
+                        <h3
+                          className={clsx(
+                            "font-semibold text-sm leading-tight truncate",
+                            signal.status === "resolved"
+                              ? "text-emerald-700 dark:text-emerald-400"
+                              : signal.severity === "dire"
+                                ? "text-red-700 dark:text-red-400"
+                                : "text-amber-700 dark:text-amber-400",
+                          )}
+                        >
+                          Signal #{signal.id.slice(0, 6)}
+                        </h3>
+                        <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-zinc-400 font-medium">
+                          <Clock className="h-3 w-3" />
+                          {signal.created_at
+                            ? format(new Date(signal.created_at), "HH:mm")
+                            : "Now"}
+                        </div>
+                      </div>
+                      <p className="text-[11px] text-slate-500 dark:text-zinc-500 mt-0.5 font-medium tracking-wide">
+                        {signal.people_count || 1} PERSON(S)
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Transcript Box matching sidebar */}
+                  <div className="bg-slate-50 dark:bg-zinc-900/50 rounded-lg p-3 border border-slate-100 dark:border-zinc-800/50 mb-4">
+                    <div className="flex items-center gap-1.5 mb-1.5">
+                      <Mic className="h-3 w-3 text-blue-500 dark:text-blue-400" />
+                      <span className="text-[10px] font-semibold text-slate-500 dark:text-zinc-400 uppercase tracking-wider">
+                        Live Transcript
                       </span>
                     </div>
-                    <span className="text-[11px] text-slate-400 dark:text-zinc-500">
-                      2m ago
-                    </span>
+                    <p className="text-[11px] text-slate-700 dark:text-zinc-300 italic line-clamp-2 pl-2 border-l-[1.5px] border-slate-300 dark:border-zinc-700">
+                      "
+                      {signal.voice_transcript ||
+                        "Audio transcript processing..."}
+                      "
+                    </p>
                   </div>
 
-                  {/* Signal ID */}
-                  <p className="text-[13px] font-medium text-slate-900 dark:text-zinc-100 mb-2 leading-snug">
-                    Signal #{signal.id.slice(0, 7)}
-                  </p>
-
-                  {/* Transcript */}
-                  <p className="text-[11px] text-slate-500 dark:text-zinc-400 mb-3 leading-relaxed px-2.5 py-2 bg-slate-50 dark:bg-zinc-800 rounded border-l-2 border-slate-200 dark:border-zinc-700 line-clamp-2">
-                    "
-                    {signal.voice_transcript || "Analyzing background audio..."}
-                    "
-                  </p>
-
-                  {/* Stats row */}
-                  <div className="flex gap-3 mb-3.5">
-                    <div className="text-center">
-                      <p className="text-base font-medium text-slate-900 dark:text-zinc-100 leading-none">
-                        {signal.people_count ?? 1}
-                      </p>
-                      <p className="text-[9px] uppercase tracking-wide text-slate-400 mt-0.5">
-                        People
-                      </p>
-                    </div>
-                    <div className="w-px bg-slate-100 dark:bg-zinc-800" />
-                    <div className="text-center">
-                      <p className="text-base font-medium text-slate-900 dark:text-zinc-100 leading-none capitalize">
-                        {signal.status}
-                      </p>
-                      <p className="text-[9px] uppercase tracking-wide text-slate-400 mt-0.5">
-                        Status
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* CTA */}
+                  {/* CTA matching sidebar's group hover links/cards */}
                   <button
-                    onClick={() => onMarkerClick(signal)}
-                    className="w-full flex items-center justify-between px-3 py-2 rounded-md text-[12px] font-medium text-slate-900 dark:text-zinc-100 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-700 hover:bg-slate-50 dark:hover:bg-zinc-800 active:scale-[0.98] transition-all"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onMarkerClick(signal);
+                    }}
+                    className="group w-full flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg text-xs font-semibold text-slate-700 dark:text-zinc-300 bg-white dark:bg-[#09090b] border border-slate-200/60 dark:border-zinc-700/60 hover:bg-slate-50 dark:hover:bg-zinc-900 active:scale-[0.98] transition-all"
                   >
-                    <span>Manage signal</span>
-                    <svg
-                      className="w-3.5 h-3.5 opacity-50"
-                      viewBox="0 0 14 14"
-                      fill="none"
-                    >
-                      <path
-                        d="M3 7h8M8 4l3 3-3 3"
-                        stroke="currentColor"
-                        strokeWidth="1.2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                    <span>Manage Signal</span>
+                    <ChevronRight className="w-3.5 h-3.5 opacity-70 group-hover:translate-x-0.5 transition-transform" />
                   </button>
                 </div>
               </div>
